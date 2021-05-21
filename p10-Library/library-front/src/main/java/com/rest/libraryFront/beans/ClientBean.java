@@ -11,6 +11,11 @@ import com.rest.libraryFront.config.BCryptManagerUtil;
 
 public class ClientBean implements Serializable, UserDetails{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private int id;
 	
 	private String nom;

@@ -37,5 +37,11 @@ public class ClientServiceImplementation implements ClientService{
 	public ClientBean getByMail(String mail) {
 		return libraryProxy.getClientByMail(mail);
 	}
+
+	@Override
+	public void cancelReservation(int id, String mail) {
+		libraryProxy.getCancelReservation(id, mail);
+		
+	}
 	
 }

@@ -8,4 +8,5 @@ public interface ClientService extends UserDetailsService{
 
 	String addClient(ClientBean client);
 	ClientBean getByMail(String mail);
+	void cancelReservation(int id, String mail);
 }

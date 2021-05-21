@@ -16,7 +16,10 @@
   				<div class="table-mg content-button" align="center">            
 					<h2>Bibliothèque</h2>
 					<h2>Bienvenue sur le site internet, ${client.prenom}</h2> <br /> 
-					<a href="${contextPath}/consultEmprunt/${ client.mail }">consulter Emprunt</a> <br /> <br />
+					<a href="${contextPath}/consultEmprunt/${ client.mail }">Emprunts & Réservations</a> <br /> <br />
+					<c:if test="${client.admin}">
+						<a href="${contextPath}/returnBook">Retourner Livres</a> <br /> <br />		
+					</c:if>
 				</div>
 				<div class="content-button" align="center">	
 					<a href="${contextPath}/accueil"> Retour Accueil</a>

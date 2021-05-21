@@ -31,6 +31,35 @@
 								</c:forEach>
 						    </table>
 						</form>
+						
+						
+						<h2>Liste des Réservations</h2>
+						<div align="center" class="table-mg">
+						    <div class="table" align="center">
+						    
+						    	<table>
+							    	<tr>
+									    <td scope="col">Nom</td>
+									    <td scope="col">Auteur</td>
+									    <td scope="col">Annuler</td>
+
+									</tr>
+									<c:forEach var="livre_reserve" items="${ livre_reserve }">
+										<tr>
+											<td><a href="${contextPath}/information/${livre_reserve.id}"><c:out value="${ livre_reserve.nom }" /></a></td>
+											<td><c:out value="${ livre_reserve.auteur }" /></td>
+											<td><a href="${contextPath}/cancelReservation/${livre_reserve.id}&${current}">Annuler</a></td>
+											
+										</tr>
+									</c:forEach>
+						    	</table>
+						    
+						    
+						    </div>
+					    </div>
+					    
+					    
+					    
 					    <div class="content-button">
 					    	<a href="${contextPath}/welcome/${current}">Retour</a>
 					    </div>

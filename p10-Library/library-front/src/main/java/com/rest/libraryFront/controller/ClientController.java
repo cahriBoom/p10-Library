@@ -26,6 +26,7 @@ public class ClientController {
 	private ClientService clientService;
 	
 
+
 	@GetMapping(value ="/login")
 	public ModelAndView getLogin(Model model) {		
 		model.addAttribute("client", new ClientBean());
@@ -78,5 +79,10 @@ public class ClientController {
 		}
 	}
 	
+	@GetMapping(value="/cancelReservation/{id}&{mail}")
+	public String getCancelReservation(@PathVariable("id") int id, @PathVariable("mail") String mail) {
+		clientService.cancelReservation(id, mail);
+		return "/cancelReservation";
+	}
 
 }

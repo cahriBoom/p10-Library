@@ -4,11 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -32,6 +28,10 @@ public class Livre {
 	private String genre;
 	
 	private String synopsis;
+
+	@JsonIgnore
+	@ManyToMany
+	private List<Client> liste_attente;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy="livre")
@@ -107,13 +107,24 @@ public class Livre {
 		this.liste_exemplaire = liste_exemplaire;
 	}
 
+	public List<Client> getListe_attente() {
+		return liste_attente;
+	}
+
+	public void setListe_attente(List<Client> liste) {
+		this.liste_attente=liste;
+	}
+	
+	public void addClientToListe_attente(Client client) {
+		this.liste_attente.add(client);
+	}
+
 	public int getNb_exemplaire() {
 		return nb_exemplaire;
 	}
 
 	public void setNb_exemplaire(int nb_exemplaire) {
 		this.nb_exemplaire = nb_exemplaire;
-	}	
-	
-	
+	}
+
 }

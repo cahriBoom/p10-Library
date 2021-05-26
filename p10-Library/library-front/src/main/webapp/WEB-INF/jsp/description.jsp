@@ -22,6 +22,7 @@
 									<tr><td scope="col">Date de Parution</td><td scope="col"><c:out value="${ parution }"></c:out></td></tr>
 									<tr><td scope="col">Date de début</td><td scope="col"><c:out value="${ debut }"></c:out></td></tr>
 									<tr><td scope="col">Date de Fin</td><td scope="col"><c:out value="${ fin }"></c:out></td></tr>
+									<tr><td scope="col">Date de Retour</td><td scope="col"><c:out value="${ retour }"></c:out></td></tr>
 								</table>
 							</td>
 							<td>
@@ -30,8 +31,15 @@
 						</tr>
 					</table>
 					<div align="center">
-						<c:if test = "${livre.nb_exemplaire>0}">
-							<div class="content-button"><a href="${contextPath}/emprunt/${exemplaire.id}&${client.id}">Emprunter</a></div>
+						<c:if test = "${not alreadyEmprunter}">
+							<c:if test = "${nb_exemplaire_restant>0}">
+								<div class="content-button"><a href="${contextPath}/emprunt/${exemplaire.id}&${client.id}">Emprunter</a></div>
+							</c:if>
+							<c:if test = "${not alreadyReserver}">
+								<c:if test = "${nb_exemplaire_restant==0}">
+									<div class="content-button"><a href="${contextPath}/reserver/${livre.id}&${client.id}">Réserver</a></div>
+								</c:if>
+							</c:if>
 						</c:if>
 					</div>
 					<a href="${contextPath}/accueil"> Retour</a>

@@ -12,7 +12,7 @@
 			<div id="contenu">
 				<div align="center">
 					<div align="center">
-						<h2>Prolongation Validée</h2>
+						<h2>${message}</h2>
 						<table class="table">
 							<tr>
 								<td>Date de début</td>

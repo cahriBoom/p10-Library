@@ -72,4 +72,9 @@ public class ClientController {
 		
 	}
 	
+	@GetMapping(value = "/cancelReservation{id}&{mail}")
+	public void getCancelReservation(@PathVariable("id")int id, @PathVariable("mail") String mail) {
+		clientService.cancelReservation(id, mail);
+	}
+	
 }

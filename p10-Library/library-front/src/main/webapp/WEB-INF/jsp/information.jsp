@@ -30,8 +30,10 @@
 						</tr>
 					</table>
 					<div align="center">
-						<c:if test="${not exemplaire.prolonge}">
-							<div class="content-button"><a href="${contextPath}/prolonge/${exemplaire.id}">Prolonger</a></div>
+						<c:if test="${peutEtreProlonger}">
+							<c:if test="${not exemplaire.prolonge}">
+								<div class="content-button"><a href="${contextPath}/prolonge/${exemplaire.id}">Prolonger</a></div>
+							</c:if>
 						</c:if>
 					</div>
 					<a href="${contextPath}/accueil"> Retour</a>

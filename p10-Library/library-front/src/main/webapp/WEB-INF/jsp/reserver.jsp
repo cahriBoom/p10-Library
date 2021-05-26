@@ -7,12 +7,9 @@
     	<%@ include file="header.jsp" %>
     </head>
 	<body>
-		<div class="container">
-		<%@ include file="menu.jsp" %>
-		<h1>Inscription Validee</h1>
-			<div class="content-button" align="center">
-				<a href="${contextPath}/accueil">Retour à l'Accueil</a>
-			</div>
+		<div class="container" align="center">
+			<%@ include file="menu.jsp" %>
+			<h1>${message}</h1>
 			<%@ include file="footer.jsp" %>
 		</div>
 	</body>

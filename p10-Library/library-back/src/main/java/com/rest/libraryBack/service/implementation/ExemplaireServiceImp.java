@@ -7,22 +7,22 @@ import org.springframework.stereotype.Service;
 
 import com.rest.libraryBack.model.Client;
 import com.rest.libraryBack.model.Exemplaire;
+import com.rest.libraryBack.model.Livre;
 import com.rest.libraryBack.repository.ClientRepository;
 import com.rest.libraryBack.repository.ExemplaireRepository;
 import com.rest.libraryBack.service.ExemplaireService;
 
 @Service
-public class ExemplaireServiceImp implements ExemplaireService{
+public class ExemplaireServiceImp implements ExemplaireService {
 
 	@Autowired
 	private ExemplaireRepository exemplaireRepository;
-	
+
 	@Autowired
 	private ClientRepository clientRepository;
-	
+
 	/*
 	 * Returns: Tous les exemplaires en cours d'emprunt par un utilisateur donné.
-	 * 
 	 */
 	@Override
 	public List<Exemplaire> getAllByUser(Client client) {
@@ -35,8 +35,7 @@ public class ExemplaireServiceImp implements ExemplaireService{
 	public List<Exemplaire> getAll() {
 		return exemplaireRepository.findAll();
 	}
-	
-	
+
 	@Override
 	public Exemplaire getById(int id) {
 		return exemplaireRepository.findById(id).get();
@@ -44,8 +43,25 @@ public class ExemplaireServiceImp implements ExemplaireService{
 
 	@Override
 	public void save(Exemplaire exemplaire) {
-		exemplaireRepository.save(exemplaire);		
+		exemplaireRepository.save(exemplaire);
 	}
 
-	
+	@Override
+	public void rendreExemplaire(Exemplaire exemplaire) {
+		Livre livre = exemplaire.getLivre();
+		exemplaire.setDebut(null);
+		exemplaire.setFin(null);
+		exemplaire.setDisponible(true);
+		exemplaire.setEmprunteur(null);
+		exemplaire.setProlonge(false);
+		
+		if(livre.getListe_attente()!=null) {
+			exemplaire.setEtat("Rendu");
+		}else {
+			exemplaire.setEtat("Disponible");
+		}	
+		
+		exemplaireRepository.save(exemplaire);
+
+	}
 }

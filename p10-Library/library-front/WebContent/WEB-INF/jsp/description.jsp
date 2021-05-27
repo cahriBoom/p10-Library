@@ -30,8 +30,11 @@
 						</tr>
 					</table>
 					<div align="center">
-						<c:if test = "${livre.nb_exemplaire>0}">
+						<c:if test = "${nb_exemplaire_restant>0}">
 							<div class="content-button"><a href="${contextPath}/emprunt/${exemplaire.id}&${client.id}">Emprunter</a></div>
+						</c:if>
+						<c:if test = "${nb_exemplaire_restant==0}">
+							<div class="content-button"><a href="${contextPath}/reserver/${livre.id}&${client.id}">Réserver</a></div>
 						</c:if>
 					</div>
 					<a href="${contextPath}/accueil"> Retour</a>

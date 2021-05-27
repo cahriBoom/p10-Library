@@ -10,11 +10,16 @@ import com.rest.libraryFront.proxies.LibraryProxy;
 import com.rest.libraryFront.service.ExemplaireService;
 
 @Service("ExemplaireService")
-public class ExemplaireServiceImplementation implements ExemplaireService{
+public class ExemplaireServiceImplementation implements ExemplaireService {
 
 	@Autowired
 	private LibraryProxy libraryProxy;
-	
+
+	@Override
+	public List<ExemplaireBean> getAll() {
+		return libraryProxy.getAllExemplaire();
+	}
+
 	@Override
 	public ExemplaireBean prolongerExemplaire(int id) {
 		return libraryProxy.prolongerExemplaire(id);
@@ -24,16 +29,21 @@ public class ExemplaireServiceImplementation implements ExemplaireService{
 	public List<ExemplaireBean> getAllExemplaireByUser(String mail) {
 		return libraryProxy.getAllLivresEmprunt(mail);
 	}
-	
+
 	@Override
 	public void emprunt(int id, int idc) {
 		libraryProxy.empruntLivre(id, idc);
-		
+
 	}
 
 	@Override
 	public ExemplaireBean getById(int id) {
 		return libraryProxy.getExemplaireById(id);
+	}
+
+	@Override
+	public void returnBook(int id) {
+		libraryProxy.getReturnBookVerification(id);
 	}
 
 }
